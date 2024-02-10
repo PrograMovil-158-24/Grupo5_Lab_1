@@ -30,7 +30,6 @@ class MainMenu extends StatelessWidget {
       body: Center(
         child: Text('Bienvenidos al menu principal de la aplicaicion para CEUTEC'),
       ),
-
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -71,6 +70,62 @@ class MainMenu extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class NewsSpace extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Noticias'),
+      ),
+      body: Center(
+        child: Text('Este es el espacio para las noticias'),
+      ),
+    );
+  }
+}
+
+class TaskList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Lista de Tareas'),
+      ),
+      body: Center(
+        child: Text('Este es el espacio para la lista de tareas'),
+      ),
+    );
+  }
+}
+
+class CurrencyConverter extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Convertidor de monedas'),
+      ),
+      body: Center(
+        child: Text('Este es el espacio para el convertidor de moendas'),
+      ),
+    );
+  }
+}
+
+class Podcasts extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Podcasts'),
+      ),
+      body: Center(
+        child: Text('Esta es la seccion para el podscats'),
       ),
     );
   }
