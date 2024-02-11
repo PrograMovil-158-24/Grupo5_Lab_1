@@ -49,3 +49,34 @@ class NewsCard extends StatelessWidget {
     required this.image,
     required this.description,
   });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Image.asset(
+            image,
+            fit: BoxFit.cover,
+          ),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              title,
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(description),
+          ),
+        ],
+      ),
+    );
+  }
+}
