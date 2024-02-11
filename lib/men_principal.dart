@@ -21,22 +21,26 @@ class MainMenu extends StatelessWidget {
               ),
             ),
             ListTile(
+              leading: Icon(Icons.article), 
               title: Text('Noticias'),
               onTap: () {
                 Navigator.pushNamed(context, '/noticias');
               },
             ),
             ListTile(
+              leading: Icon(Icons.monetization_on), 
               title: Text('Cambio de Monedas'),
               onTap: () {
               },
             ),
             ListTile(
+              leading: Icon(Icons.list), 
               title: Text('Lista de tareas'),
               onTap: () {
               },
             ),
             ListTile(
+              leading: Icon(Icons.mic), 
               title: Text('Podcast'),
               onTap: () {
               },
