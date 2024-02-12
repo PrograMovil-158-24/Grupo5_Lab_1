@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:laboratorio1/presentation/screens/menu/menu_principal.dart';
+import 'package:laboratorio1/presentation/screens/noticias/noticias.dart';
+import 'package:laboratorio1/presentation/screens/podcast/podcast.dart';
 
 class TaskListApp extends StatelessWidget {
   @override
@@ -10,10 +13,10 @@ class TaskListApp extends StatelessWidget {
       ),
       home: InitialPage(title: 'Listado de Pendientes Grupo 5'),
       routes: {
-        '/noticias': (context) => Placeholder(),
-        '/cambio_monedas': (context) => Placeholder(),
+        '/': (context) => MainMenu(),
+        '/noticias': (context) => noticias(),
         '/lista_tareas': (context) => TaskListApp(),
-        '/podcast': (context) => Placeholder(),
+        '/podcast': (context) => ScreenForPodcast(),
       },
     );
   }
@@ -113,4 +116,5 @@ class _InitialPageState extends State<InitialPage> {
 
 void main() {
   runApp(TaskListApp());
+  
 }

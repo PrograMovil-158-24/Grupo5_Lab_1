@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => MainMenu(), 
         '/noticias': (context) => noticias(),
-        '/cambio_monedas': (context) => CambioMonedasScreen(),
         '/lista_tareas': (context) => TaskListApp(),
         '/podcast': (context) => ScreenForPodcast(),
       },

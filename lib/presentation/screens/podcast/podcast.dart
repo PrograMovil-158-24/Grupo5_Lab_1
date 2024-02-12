@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:laboratorio1/presentation/screens/lista_tareas/l_tareas.dart';
+import 'package:laboratorio1/presentation/screens/menu/menu_principal.dart';
+import 'package:laboratorio1/presentation/screens/noticias/noticias.dart';
+import 'package:laboratorio1/presentation/screens/podcast/podcast.dart';
+
 
 class ScreenForPodcast extends StatelessWidget {
   const ScreenForPodcast({Key? key}) : super(key: key);
@@ -77,8 +82,6 @@ class ScreenForPodcast extends StatelessWidget {
               padding: EdgeInsets.all(8.0),
               child: Text('1:54 / 3:00'),
             ),
-
-            // Descripción del Album reproducido
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text('Descripción del Album'),
@@ -131,9 +134,10 @@ void main() {
   runApp(MaterialApp(
     home: ScreenForPodcast(),
     routes: {
-      '/noticias': (context) => Placeholder(), 
-      '/cambio_monedas': (context) => Placeholder(),
-      '/lista_tareas': (context) => Placeholder(),
+       '/': (context) => MainMenu(),
+        '/noticias': (context) => noticias(),
+        '/lista_tareas': (context) => TaskListApp(),
+        '/podcast': (context) => ScreenForPodcast(),
     },
   ));
 }
