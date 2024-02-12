@@ -1,131 +1,81 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+class noticias extends StatelessWidget {
+  final List<Map<String, String>> newsList = [
+    {
+      'title': 'Nuevo curso de programación en CEUTEC',
+      'image': 'not.jpg',
+      'description': 'Se anuncia un nuevo curso de programación en CEUTEC.'
+    },
+    {
+      'title': 'Inauguración de laboratorio de ciencias',
+      'image': 'not.jpg',
+      'description': 'Se inaugura un nuevo laboratorio de ciencias en la universidad.'
+    },
+    {
+      'title': 'Charla sobre inteligencia artificial',
+      'image': 'not.jpg',
+      'description': 'Se realizará una charla sobre inteligencia artificial en el auditorio.'
+    },
+  ];
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: '/',
-      routes: {
-        '/': (context) => MainMenu(),
-        '/noticias': (context) => NewsSpace(),
-        '/tareas': (context) => TaskList(),
-        '/monedas': (context) => CurrencyConverter(),
-        '/podcasts': (context) => Podcasts(),
-      },
-    );
-  }
-}
-
-class MainMenu extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Main Menu'),
-      ),
-      body: Center(
-        child: Text('Bienvenidos al menu principal de la aplicaicion para CEUTEC'),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Menu de Opciones'),
-              decoration: BoxDecoration(
-                color: Colors.red,
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.article),
-              title: Text('Espacio para Noticias'),
-              onTap: () {
-                Navigator.pushNamed(context, '/noticias');
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.task),
-              title: Text('Lista de Tareas'),
-              onTap: () {
-                Navigator.pushNamed(context, '/tareas');
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.attach_money),
-              title: Text('Cambio de Monedas'),
-              onTap: () {
-                Navigator.pushNamed(context, '/monedas');
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.headset),
-              title: Text('Podcasts'),
-              onTap: () {
-                Navigator.pushNamed(context, '/podcasts');
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class NewsSpace extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Noticias'),
       ),
-      body: Center(
-        child: Text('Este es el espacio para las noticias'),
+      body: ListView.builder(
+        itemCount: newsList.length,
+        itemBuilder: (context, index) {
+          return NewsCard(
+            title: newsList[index]['title']!,
+            image: newsList[index]['image']!,
+            description: newsList[index]['description']!,
+          );
+        },
       ),
     );
   }
 }
 
-class TaskList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Lista de Tareas'),
-      ),
-      body: Center(
-        child: Text('Este es el espacio para la lista de tareas'),
-      ),
-    );
-  }
-}
+class NewsCard extends StatelessWidget {
+  final String title;
+  final String image;
+  final String description;
 
-class CurrencyConverter extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Convertidor de monedas'),
-      ),
-      body: Center(
-        child: Text('Este es el espacio para el convertidor de moendas'),
-      ),
-    );
-  }
-}
+  const NewsCard({
+    required this.title,
+    required this.image,
+    required this.description,
+  });
 
-class Podcasts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Podcasts'),
-      ),
-      body: Center(
-        child: Text('Esta es la seccion para el podscats'),
+    return Card(
+      margin: EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Image.asset(
+            image,
+            fit: BoxFit.cover,
+          ),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              title,
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(description),
+          ),
+        ],
       ),
     );
   }
