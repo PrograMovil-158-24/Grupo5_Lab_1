@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 
-class screenforpodcast extends StatelessWidget {
-  const screenforpodcast({Key? key}) : super(key: key);
+class ScreenForPodcast extends StatelessWidget {
+  const ScreenForPodcast({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Podcast'),
+        leading: IconButton(
+          icon: Icon(Icons.menu),
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
+        ),
+      ),
       backgroundColor: Colors.blue,
       body: SafeArea(
         child: Column(
@@ -17,7 +26,7 @@ class screenforpodcast extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
                   image: AssetImage(
-                    'https://c4.wallpaperflare.com/wallpaper/193/316/956/linkin-park-wallpaper-preview.jpg',
+                    'assets/linkin_park_album.jpg',
                   ),
                   fit: BoxFit.cover,
                 ),
@@ -34,7 +43,7 @@ class screenforpodcast extends StatelessWidget {
 
             const Padding(
               padding: EdgeInsets.all(8.0),
-              child: Text('Linking Park Minutes To Midnight'),
+              child: Text('Linkin Park Minutes To Midnight'),
             ),
 
             const LinearProgressIndicator(),
@@ -77,6 +86,54 @@ class screenforpodcast extends StatelessWidget {
           ],
         ),
       ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Menú Principal'),
+              decoration: BoxDecoration(
+                color: Colors.red,
+              ),
+            ),
+            ListTile(
+              title: Text('Noticias'),
+              onTap: () {
+                Navigator.popAndPushNamed(context, '/noticias');
+              },
+            ),
+            ListTile(
+              title: Text('Cambio de Monedas'),
+              onTap: () {
+                Navigator.popAndPushNamed(context, '/cambio_monedas');
+              },
+            ),
+            ListTile(
+              title: Text('Lista de tareas'),
+              onTap: () {
+                Navigator.popAndPushNamed(context, '/lista_tareas');
+              },
+            ),
+            ListTile(
+              title: Text('Podcast'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: ScreenForPodcast(),
+    routes: {
+      '/noticias': (context) => Placeholder(), 
+      '/cambio_monedas': (context) => Placeholder(),
+      '/lista_tareas': (context) => Placeholder(),
+    },
+  ));
 }

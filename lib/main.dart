@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         '/noticias': (context) => noticias(),
         '/cambio_monedas': (context) => CambioMonedasScreen(),
         '/lista_tareas': (context) => TaskListApp(),
-        '/podcast': (context) => screenforpodcast(),
+        '/podcast': (context) => ScreenForPodcast(),
       },
     );
   }
