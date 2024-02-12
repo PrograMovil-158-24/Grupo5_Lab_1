@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(TaskListApp());
-}
-
 class TaskListApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,6 +9,12 @@ class TaskListApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: InitialPage(title: 'Listado de Pendientes Grupo 5'),
+      routes: {
+        '/noticias': (context) => Placeholder(),
+        '/cambio_monedas': (context) => Placeholder(),
+        '/lista_tareas': (context) => TaskListApp(),
+        '/podcast': (context) => Placeholder(),
+      },
     );
   }
 }
@@ -55,6 +57,43 @@ class _InitialPageState extends State<InitialPage> {
           );
         },
       ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Menú Principal'),
+              decoration: BoxDecoration(
+                color: Colors.red,
+              ),
+            ),
+            ListTile(
+              title: Text('Noticias'),
+              onTap: () {
+                Navigator.pushNamed(context, '/noticias');
+              },
+            ),
+            ListTile(
+              title: Text('Cambio de Monedas'),
+              onTap: () {
+                Navigator.pushNamed(context, '/cambio_monedas');
+              },
+            ),
+            ListTile(
+              title: Text('Lista de tareas'),
+              onTap: () {
+                Navigator.pushNamed(context, '/lista_tareas');
+              },
+            ),
+            ListTile(
+              title: Text('Podcast'),
+              onTap: () {
+                Navigator.pushNamed(context, '/podcast');
+              },
+            ),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           _addTask('Nueva tarea de grupo 5', 'Tarea');
@@ -70,4 +109,8 @@ class _InitialPageState extends State<InitialPage> {
       tasks.add(Actividad(nombre: taskName, tipo: taskType));
     });
   }
+}
+
+void main() {
+  runApp(TaskListApp());
 }
