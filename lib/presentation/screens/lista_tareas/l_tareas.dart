@@ -17,17 +17,28 @@ class TaskListApp extends StatelessWidget {
   }
 }
 
+class Actividad {
+  final String nombre;
+  final String tipo;
+
+  Actividad({required this.nombre, required this.tipo});
+}
+
 class InitialPage extends StatefulWidget {
   final String title;
 
-  InitialPage({Key key, this.title}) : super(key: key);
+  InitialPage({Key? key, required this.title}) : super(key: key);
 
   @override
   _InitialPageState createState() => _InitialPageState();
 }
 
 class _InitialPageState extends State<InitialPage> {
-  List<String> tasks = ['Tarea de Edgar Marin', 'Tarea de Alejandro', 'Tarea de Richard'];
+  List<Actividad> tasks = [
+    Actividad(nombre: 'Tarea de Edgar Marin', tipo: 'Tarea'),
+    Actividad(nombre: 'Tarea de Alejandro', tipo: 'Tarea'),
+    Actividad(nombre: 'Tarea de Richard', tipo: 'Tarea'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +50,14 @@ class _InitialPageState extends State<InitialPage> {
         itemCount: tasks.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(tasks[index]),
+            title: Text(tasks[index].nombre),
+            subtitle: Text(tasks[index].tipo),
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          _addTask('Nueva tarea de grupo 5');
+          _addTask('Nueva tarea de grupo 5', 'Tarea');
         },
         tooltip: 'Agregar Tarea Nueva',
         child: Icon(Icons.add),
@@ -53,9 +65,9 @@ class _InitialPageState extends State<InitialPage> {
     );
   }
 
-  void _addTask(String task) {
+  void _addTask(String taskName, String taskType) {
     setState(() {
-      tasks.add(task);
+      tasks.add(Actividad(nombre: taskName, tipo: taskType));
     });
   }
 }

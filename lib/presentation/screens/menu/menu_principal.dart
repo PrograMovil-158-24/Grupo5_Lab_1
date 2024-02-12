@@ -29,16 +29,19 @@ class MainMenu extends StatelessWidget {
             ListTile(
               title: Text('Cambio de Monedas'),
               onTap: () {
+                Navigator.pushNamed(context, '/cambio_monedas');
               },
             ),
             ListTile(
               title: Text('Lista de tareas'),
               onTap: () {
+                Navigator.pushNamed(context, '/lista_tareas');
               },
             ),
             ListTile(
               title: Text('Podcast'),
               onTap: () {
+                Navigator.pushNamed(context, '/podcast');
               },
             ),
           ],
