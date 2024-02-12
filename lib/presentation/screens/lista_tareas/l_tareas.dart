@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(tasklistem());
+  runApp(TaskListApp());
 }
 
-class tasklistem extends StatelessWidget {
+class TaskListApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,22 +12,22 @@ class tasklistem extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: intialpage(title: 'Listado de Pendientes Grupo 5'),
+      home: InitialPage(title: 'Listado de Pendientes Grupo 5'),
     );
   }
 }
 
-class intialpage extends StatefulWidget {
-  intialpage({Key key, this.title}) : super(key: key);
-
+class InitialPage extends StatefulWidget {
   final String title;
 
+  InitialPage({Key key, this.title}) : super(key: key);
+
   @override
-  homepagestate createState() => homepagestate();
+  _InitialPageState createState() => _InitialPageState();
 }
 
-class homepagestate extends State<intialpage> {
-  List<String> tareas = ['Tarea de Edgar Marin', 'Tarea de Alejandro', 'Tarea de Richard'];
+class _InitialPageState extends State<InitialPage> {
+  List<String> tasks = ['Tarea de Edgar Marin', 'Tarea de Alejandro', 'Tarea de Richard'];
 
   @override
   Widget build(BuildContext context) {
@@ -36,23 +36,26 @@ class homepagestate extends State<intialpage> {
         title: Text(widget.title),
       ),
       body: ListView.builder(
-        itemCount: tareas.length,
+        itemCount: tasks.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(tareas[index]),
+            title: Text(tasks[index]),
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Agregar una nueva tarea
-          setState(() {
-            tareas.add('Nueva tarea de grupo 5');
-          });
+          _addTask('Nueva tarea de grupo 5');
         },
         tooltip: 'Agregar Tarea Nueva',
         child: Icon(Icons.add),
       ),
     );
+  }
+
+  void _addTask(String task) {
+    setState(() {
+      tasks.add(task);
+    });
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ScreenForPodcast extends StatelessWidget {
-  const ScreenForPodcast({Key? key}) : super(key: key);
+class screenforpodcast extends StatelessWidget {
+  const screenforpodcast({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class ScreenForPodcast extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
-                  image: NetworkImage(
+                  image: AssetImage(
                     'https://c4.wallpaperflare.com/wallpaper/193/316/956/linkin-park-wallpaper-preview.jpg',
                   ),
                   fit: BoxFit.cover,
@@ -24,24 +24,20 @@ class ScreenForPodcast extends StatelessWidget {
               ),
             ),
 
-            // Título del podcast
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 'Album Minutes To Midnight',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
 
-            // Nombre del almbum a reproducir
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text('Linking Park Minutes To Midnight'),
             ),
 
-            LinearProgressIndicator(
-              value: 0.6, // Example value, should represent actual progress
-            ),
+            const LinearProgressIndicator(),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -68,13 +64,14 @@ class ScreenForPodcast extends StatelessWidget {
               ],
             ),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text('1:54 / 3:00'),
             ),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            // Descripción del Album reproducido
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text('Descripción del Album'),
             ),
           ],
@@ -82,10 +79,4 @@ class ScreenForPodcast extends StatelessWidget {
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: ScreenForPodcast(),
-  ));
 }
